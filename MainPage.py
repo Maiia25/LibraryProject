@@ -36,6 +36,7 @@ def choosebook():
          for book in booklist:
              listbox.insert(END, book.information())
              print(book.information())
+         # User login and take a book
          #def takebook(): #обрати книгу з наявних
          btn4 = Button(screen, text="Обрати книгу", bg="blue", activebackground="green", fg="white",
                   activeforeground="red", font=("Courier", 30),
