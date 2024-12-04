@@ -2,6 +2,7 @@ from tkinter import *
 #from PIL import Image, ImageTk
 from PIL import Image, ImageTk
 
+from FindBookPage import find_book_page
 from Library import *
 from Book import *  # * - імпортує все
 screen = Tk()
@@ -12,40 +13,11 @@ bg_image = bg_image.resize((600, 400)) #картеж- список. який н�
 bg_photo = ImageTk.PhotoImage(bg_image)
 bg_label = Label(screen, image=bg_photo)
 bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-library = Library(name="Бібліотека", address="Київ", country="Україна", email="library@gmail.com")
-library.register_book(title="Гарі Потер", author="Роулінг", year_published=2010, genre="фентезі")
-library.register_book(title="Книга1", author="Автор1", year_published=2022, genre="історія")
-library.register_book(title="Книга2", author="Автор2", year_published=2022, genre="фентезі")
-library.register_book(title="Книга1", author="Автор2", year_published=2015, genre="історія")
-
 def choosebook():
-  btn.destroy()
-  btn1.destroy()
-  btn2.destroy()
-  var1 = StringVar()#String для букв, а не чисел
-  entry = Entry(screen, font=("Courier", 30), textvariable=var1)  # поле для вводу
-  entry.pack()
-  def findbook():
-     booklist = library.findbook(var1.get())  #назва, яку ввів користувач
-     if len(booklist)!=0:
-         listbox = Listbox(bg="white", font=('Arial', 30), height=5)
-         listbox.pack()
-         entry.destroy()
-         btn3.destroy()
-         #listbox.insert(END, "Book 1")
-         for book in booklist:
-             listbox.insert(END, book.information())
-             print(book.information())
-         # User login and take a book
-         #def takebook(): #обрати книгу з наявних
-         btn4 = Button(screen, text="Обрати книгу", bg="blue", activebackground="green", fg="white",
-                  activeforeground="red", font=("Courier", 30),
-                     relief=FLAT, overrelief=GROOVE)
-         btn4.pack()
-  btn3 = Button(screen, text="Шукати книгу", bg="blue", activebackground="green", fg="white",
-              activeforeground="red", font=("Courier", 30),
-                 relief=FLAT, overrelief=GROOVE, command = findbook)
-  btn3.pack()
+    btn.destroy()
+    btn1.destroy()
+    btn2.destroy()
+    find_book_page(screen)
 btn = Button(screen, text="Пошук книги", bg="blue", activebackground="green", fg="white",
               activeforeground="red", font=("Courier", 30),
                  relief=FLAT, overrelief=GROOVE, command = choosebook) #relief - рамка кнопки
