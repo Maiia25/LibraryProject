@@ -1,6 +1,8 @@
 from Library import Library
 from tkinter import *
 
+from User import User
+
 library = Library(name="Бібліотека", address="Київ", country="Україна", email="library@gmail.com")
 library.register_book(title="Гарі Потер", author="Роулінг", year_published=2010, genre="фентезі")
 library.register_book(title="Книга1", author="Автор1", year_published=2022, genre="історія")
@@ -20,10 +22,18 @@ def create_book_list(screen,booklist):
     listbox.pack()
     for book in booklist:
         listbox.insert(END, book.information())
-        print(book.information())
     # User login and take a book
-    # def takebook(): #обрати книгу з наявних
+    def takebook(): #обрати книгу з наявних
+        selected_list = listbox.curselection()
+        if len(selected_list) != 0:
+            cur_num = selected_list[0]
+            current_book = booklist[cur_num]
+            library.register_user("John","124343254","john@gmail.com",1980)
+            library.reserve("John","124343254",current_book)
+            library.history_journal("John","124343254")
+            listbox.destroy()
+            btn4.destroy()
     btn4 = Button(screen, text="Обрати книгу", bg="blue", activebackground="green", fg="white",
                   activeforeground="red", font=("Courier", 30),
-                  relief=FLAT, overrelief=GROOVE)
+                  relief=FLAT, overrelief=GROOVE,command=takebook)
     btn4.pack()

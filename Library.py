@@ -44,14 +44,12 @@ class Library:
             print(book.information())
     def register_user(self, name, telephone, email, year):
         self.__users.append(User(name, telephone, email, year))
-    def reserve(self, name, telephone, title):
+    def reserve(self, name, telephone, book):
         for user in self.__users:
             if user.get_name() == name and user.get_telephone() == telephone:
-                for book in self.__books:
-                    if book.get_title() == title and book.get_exist():
-                        book.set_busybook()
-                        self.__journal[self.__id] = [book, user]
-                        self.__id = self.__id+1
+                    book.set_busybook()
+                    self.__journal[self.__id] = [book, user]
+                    self.__id = self.__id+1
     def return_book(self, name, telephone, title):
         for user in self.__users:
             if user.get_name() == name and user.get_telephone() == telephone:

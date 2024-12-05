@@ -41,4 +41,3 @@ btn2 = Button(screen, text="Вийти з програми", bg="blue", activeba
                  relief=FLAT, overrelief=GROOVE, command = screen.destroy)
 btn2.pack(pady=20)
 screen.mainloop()
-
