@@ -1,4 +1,8 @@
 from tkinter import *
+
+from UserJournal import show_journal
+
+
 def enter_userinfo(screen, library, current_book):
     user_name = StringVar()  # String для букв, а не чисел
     label_name = Label(screen, text="Введіть ім'я", font=("Courier", 24))
@@ -25,8 +29,19 @@ def enter_userinfo(screen, library, current_book):
         library.register_user(user_name.get(), user_phone.get(), user_mail.get(), user_year.get()) #get-функція
         library.reserve(user_name.get(), user_phone.get(), current_book)
         library.history_journal(user_name.get(), user_phone.get())
+        show_journal(screen, user_name.get(), current_book)
+        entry_year.destroy()
+        entry_mail.destroy()
+        entry_phone.destroy()
+        entry_name.destroy()
+        label_year.destroy()
+        label_mail.destroy()
+        label_phone.destroy()
+        label_name.destroy()
+        btnsend.destroy()
     btnsend = Button(screen, text="Підтвердити", bg="blue", activebackground="green", fg="white",
                      activeforeground="red", font=("Courier", 24),
                      relief=FLAT, overrelief=GROOVE, command=accept_userinfo)
+
     btnsend.pack()
 
