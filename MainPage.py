@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 from FindBookPage import find_book_page
 from Library import *
 from Book import *  # * - імпортує все
+from ReturnButton import return_userbook
 screen = Tk()
 screen.geometry("600x400")
 screen.title("Welcome to the library")
@@ -41,9 +42,18 @@ def returnbook():
   label_phone.pack()
   entry_phone = Entry(screen, font=("Courier", 30), textvariable=user_phone)
   entry_phone.pack()
+  def send_data ():
+      label_returnbook.destroy()
+      entry.destroy()
+      label_name.destroy()
+      entry_name.destroy()
+      label_phone.destroy()
+      entry_phone.destroy()
+      btn4.destroy()
+      return_userbook(screen, user_book, user_name, user_phone)
   btn4 = Button(screen, text="Повернути", bg="blue", activebackground="green", fg="white",
               activeforeground="red", font=("Courier", 30),
-                 relief=FLAT, overrelief=GROOVE)
+                 relief=FLAT, overrelief=GROOVE, command = send_data)
   btn4.pack()
 btn1 = Button(screen, text="Повернути книгу", bg="blue", activebackground="green", fg="white",
               activeforeground="red", font=("Courier", 30),

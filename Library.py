@@ -54,8 +54,11 @@ class Library:
         for user in self.__users:
             if user.get_name() == name and user.get_telephone() == telephone:
                 for book in self.__books:
+                    print(book.information())
                     if book.get_title() == title and not book.get_exist():
                         book.set_freebook()
+                        return True
+        return False
     def history_journal(self, name, telephone):
         for user in self.__users:
             if user.get_name() == name and user.get_telephone() == telephone:
